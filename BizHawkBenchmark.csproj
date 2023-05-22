@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net48</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>8.0</LangVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="$(ProjectDir)../BizHawk/src/BizHawk.Emulation.Cores/BizHawk.Emulation.Cores.csproj" />
+		<ProjectReference Include="$(ProjectDir)../BizHawk/src/BizHawk.Emulation.Common/BizHawk.Emulation.Common.csproj" />
+		<ProjectReference Include="$(ProjectDir)../BizHawk/src/BizHawk.Client.Common/BizHawk.Client.Common.csproj" />
+	</ItemGroup>
+</Project>

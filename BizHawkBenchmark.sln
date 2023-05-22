@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizHawkBenchmark", "BizHawkBenchmark\BizHawkBenchmark.csproj", "{9C72722F-C4A4-4AAD-9C8D-C44C516AAD9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizHawkBenchmark", "BizHawkBenchmark.csproj", "{9C72722F-C4A4-4AAD-9C8D-C44C516AAD9B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizHawk.Client.Common", "..\BizHawk\src\BizHawk.Client.Common\BizHawk.Client.Common.csproj", "{8A67B187-3FD0-46F2-B8DC-FEB397549020}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizHawk.Emulation.Common", "..\BizHawk\src\BizHawk.Emulation.Common\BizHawk.Emulation.Common.csproj", "{5130D531-9860-4A1D-9381-14BDB22502E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizHawk.Emulation.Cores", "..\BizHawk\src\BizHawk.Emulation.Cores\BizHawk.Emulation.Cores.csproj", "{3457E35E-17D0-4F74-A241-A18A79690692}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{9C72722F-C4A4-4AAD-9C8D-C44C516AAD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C72722F-C4A4-4AAD-9C8D-C44C516AAD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C72722F-C4A4-4AAD-9C8D-C44C516AAD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A67B187-3FD0-46F2-B8DC-FEB397549020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A67B187-3FD0-46F2-B8DC-FEB397549020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A67B187-3FD0-46F2-B8DC-FEB397549020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A67B187-3FD0-46F2-B8DC-FEB397549020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5130D531-9860-4A1D-9381-14BDB22502E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5130D531-9860-4A1D-9381-14BDB22502E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5130D531-9860-4A1D-9381-14BDB22502E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5130D531-9860-4A1D-9381-14BDB22502E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3457E35E-17D0-4F74-A241-A18A79690692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3457E35E-17D0-4F74-A241-A18A79690692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3457E35E-17D0-4F74-A241-A18A79690692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3457E35E-17D0-4F74-A241-A18A79690692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
