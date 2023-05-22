@@ -1,2 +1,2 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// Assumes BizHawk is cloned in a folder next to this one
 Console.WriteLine("Hello, World!");
