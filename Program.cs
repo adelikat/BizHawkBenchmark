@@ -27,9 +27,11 @@ public static class Program
         var bk2 = new Bk2Movie(movieSession, "test123.bk2");
         movieSession.QueueNewMovie(bk2, true, emulator.SystemId, new Dictionary<string, string>());
         movieSession.RunQueuedMovie(true, emulator);
-        var adapter = new AutoFireStickyXorAdapter { Source = new Controller(definition) };
+        var controller = new Controller(definition);
+        var adapter = new AutoFireStickyXorAdapter { Source = controller };
         movieSession.MovieIn = adapter;
         movieSession.HandleFrameBefore();
+        emulator.FrameAdvance(controller, true);
         movieSession.HandleFrameAfter();
         var test = movieSession.Movie.GetLogEntries();
     }
