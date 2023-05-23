@@ -9,6 +9,10 @@ namespace BizHawkBenchmark
         public static void Main(string[] args)
         {
             BenchmarkRunner.Run<MovieRunner>();
+
+           // for debugging
+           //var r = new MovieRunner();
+           //r.RecordNonEmptyFrame();
         }
     }
 }

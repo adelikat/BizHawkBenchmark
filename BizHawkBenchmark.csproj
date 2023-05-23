@@ -12,5 +12,6 @@
 		<ProjectReference Include="$(ProjectDir)../BizHawk/src/BizHawk.Emulation.Cores/BizHawk.Emulation.Cores.csproj" />
 		<ProjectReference Include="$(ProjectDir)../BizHawk/src/BizHawk.Emulation.Common/BizHawk.Emulation.Common.csproj" />
 		<ProjectReference Include="$(ProjectDir)../BizHawk/src/BizHawk.Client.Common/BizHawk.Client.Common.csproj" />
+		<ProjectReference Include="..\BizHawk\src\BizHawk.Common\BizHawk.Common.csproj" />
 	</ItemGroup>
 </Project>

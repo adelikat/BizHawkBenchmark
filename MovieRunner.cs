@@ -12,7 +12,7 @@ namespace BizHawkBenchmark
     [RankColumn]
     public class MovieRunner
     {
-        private static readonly string[] NesButtons = { "Up", "Down", "Left", "Right", "Select", "Start", "A", "B" };
+        private static readonly string[] NesButtons = { "P1 Up", "P1 Down", "P1 Left", "P1 Right", "P1 Select", "P1 Start", "P1 A", "P1 B" };
 
         private static readonly MovieConfig MovieConfig = new MovieConfig
         {
@@ -26,7 +26,8 @@ namespace BizHawkBenchmark
 
         private readonly IMovieSession _movieMovieSession;
         private readonly IEmulator _emulator;
-        private readonly IController _controller;
+        private readonly SimpleController _unpressedController;
+        private readonly SimpleController _pressedController;
 
         private static void Noop()
         {
@@ -40,20 +41,41 @@ namespace BizHawkBenchmark
             var bk2 = new Bk2Movie(_movieMovieSession, "test123.bk2");
             _movieMovieSession.QueueNewMovie(bk2, true, _emulator.SystemId, new Dictionary<string, string>());
             _movieMovieSession.RunQueuedMovie(true, _emulator);
-            _controller = new Controller(definition);
-            var adapter = new AutoFireStickyXorAdapter { Source = _controller };
+            _unpressedController = new SimpleController(definition);
+            _pressedController = new SimpleController(definition);
+
+            // Is all this really necessary?
+           
+            foreach (var btn in definition.BoolButtons)
+            {
+               _pressedController[btn] = true;
+            }
+            
+            var adapter = new AutoFireStickyXorAdapter { Source = _unpressedController };
             _movieMovieSession.MovieIn = adapter;
         }
 
+        //[GlobalSetup]
+        //public void Blah()
+        //{
+        //}
+
         [Benchmark]
-        public void RecordFrames()
+        public void RecordEmptyFrame()
         {
-            for (var i = 0; i < 1; i++)
-            {
-                _movieMovieSession.HandleFrameBefore();
-                _emulator.FrameAdvance(_controller, true);
-                _movieMovieSession.HandleFrameAfter();
-            }
+            _movieMovieSession.MovieIn.Source = _unpressedController;
+            _movieMovieSession.HandleFrameBefore();
+            _emulator.FrameAdvance(_unpressedController, true);
+            _movieMovieSession.HandleFrameAfter();
+        }
+
+        [Benchmark]
+        public void RecordNonEmptyFrame()
+        {
+            _movieMovieSession.MovieIn.Source = _pressedController;
+            _movieMovieSession.HandleFrameBefore();
+            _emulator.FrameAdvance(_pressedController, true);
+            _movieMovieSession.HandleFrameAfter();
         }
     }
 }
