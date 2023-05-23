@@ -77,5 +77,31 @@ namespace BizHawkBenchmark
             _emulator.FrameAdvance(_pressedController, true);
             _movieMovieSession.HandleFrameAfter();
         }
+
+        [Benchmark]
+        public void RecordEmptyFrame100K()
+        {
+            _movieMovieSession.MovieIn.Source = _unpressedController;
+
+            for (int i = 0; i < 100_000; i++)
+            {
+                _movieMovieSession.HandleFrameBefore();
+                _emulator.FrameAdvance(_unpressedController, true);
+                _movieMovieSession.HandleFrameAfter();
+            }
+        }
+
+        [Benchmark]
+        public void RecordNonEmptyFrame100K()
+        {
+            _movieMovieSession.MovieIn.Source = _pressedController;
+
+            for (int i = 0; i < 100_000; i++)
+            {
+                _movieMovieSession.HandleFrameBefore();
+                _emulator.FrameAdvance(_pressedController, true);
+                _movieMovieSession.HandleFrameAfter();
+            }
+        }
     }
 }
