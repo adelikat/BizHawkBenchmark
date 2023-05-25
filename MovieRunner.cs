@@ -29,6 +29,8 @@ namespace BizHawkBenchmark
         private readonly SimpleController _unpressedController;
         private readonly SimpleController _pressedController;
 
+        private readonly IMovieSession _movieSessionForSaving;
+
         private static void Noop()
         {
         }
@@ -53,12 +55,36 @@ namespace BizHawkBenchmark
             
             var adapter = new AutoFireStickyXorAdapter { Source = _unpressedController };
             _movieMovieSession.MovieIn = adapter;
+
+            _movieSessionForSaving = new MovieSession(MovieConfig, ".", new NoopDialogParent(), new NoopQuickBmpFile(), Noop, Noop);
+            var bk2ForSaving = new Bk2Movie(_movieSessionForSaving, "saving123.bk2");
+            _movieMovieSession.QueueNewMovie(bk2ForSaving, true, _emulator.SystemId, new Dictionary<string, string>());
+            _movieMovieSession.RunQueuedMovie(true, _emulator);
+            for (int i = 0; i < 100_000; i++)
+            {
+                _movieMovieSession.HandleFrameBefore();
+                _movieMovieSession.HandleFrameAfter();
+            }
+
+            _movieMovieSession.Movie.Save();
         }
 
         //[GlobalSetup]
         //public void Blah()
         //{
         //}
+
+        [Benchmark]
+        public void Save100k()
+        {
+            _movieMovieSession.Movie.Save();
+        }
+
+        [Benchmark]
+        public void Load100k()
+        {
+            _movieMovieSession.Movie.Load();
+        }
 
         [Benchmark]
         public void RecordEmptyFrame()
