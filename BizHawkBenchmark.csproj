@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net48</TargetFramework>
+		<TargetFrameworks>net48;net6.0;net7.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
-		<LangVersion>8.0</LangVersion>
+		<LangVersion>11.0</LangVersion>
+	</PropertyGroup>
+	<PropertyGroup>
+		<UseSharedCompilation>false</UseSharedCompilation>
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />

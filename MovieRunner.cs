@@ -8,8 +8,10 @@ using BizHawkBenchmark.Noops;
 namespace BizHawkBenchmark
 {
     [MemoryDiagnoser]
-    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [Orderer(SummaryOrderPolicy.Method)]
     [RankColumn]
+    [SimpleJob(RuntimeMoniker.Net48)]
+    [SimpleJob(RuntimeMoniker.Net70)]
     public class MovieRunner
     {
         private static readonly string[] NesButtons = { "P1 Up", "P1 Down", "P1 Left", "P1 Right", "P1 Select", "P1 Start", "P1 A", "P1 B" };
