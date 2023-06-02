@@ -8,7 +8,7 @@ namespace BizHawkBenchmark
     {
         public static void Main(string[] args)
         {
-            BenchmarkRunner.Run<MovieRunner>();
+            BenchmarkRunner.Run<SortedSetBenchmark>();
 
            // for debugging
            //var r = new MovieRunner();
